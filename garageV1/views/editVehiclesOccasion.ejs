@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le véhicule d'occasion</title>
+</head>
+
+<body>
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+            <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> <!-- Ligne ajoutée -->
+        </div>
+    </div>
+</div>
+<h1>Modifier le véhicule d'occasion</h1>
+
+<form action="/vehiclesOccasion/edit/<%= vehicle.id %>" method="post" enctype="multipart/form-data">
+    <label for="brand">Marque:</label>
+    <input type="text" name="brand" value="<%= vehicle.brand %>" required>
+    
+    <label for="model">Modèle:</label>
+    <input type="text" name="model" value="<%= vehicle.model %>" required>
+    
+    <label for="year">Année:</label>
+    <input type="number" name="year" value="<%= vehicle.year %>" required>
+
+    <label for="mileage">Kilométrage:</label>
+    <input type="number" name="mileage" value="<%= vehicle.mileage %>" required>
+
+    
+    <label for="price">Prix:</label>
+    <input type="number" name="price" value="<%= vehicle.price %>" required>
+
+    <label for="description">Description:</label>
+    <textarea name="description" required><%= vehicle.description %></textarea>
+
+    <label for="vehicleImage">Image actuelle:</label>
+    <img src="<%= vehicle.image_url %>" width="200">
+    <input type="hidden" name="currentImage" value="<%= vehicle.image_url %>">
+    <input type="file" name="vehicleImage">
+
+    <input type="submit" value="Mettre à jour">
+</form>
+
+</body>
+</html>

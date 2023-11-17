@@ -1,0 +1,28 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.container h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Ajoutez d'autres styles personnalisés ici */
+/* Limit the width of each carousel */
+.carousel-limited {
+    max-width: 80%; 
+    margin: 0 auto; 
+}
+
+/* Make sure the images scale properly */
+.carousel-limited .d-block {
+    width: 100%;
+    height: auto;
+}
+.navbar-logo {
+    height: 40px; /* Ajustez selon la taille désirée */
+    margin-right: 10px; /* Espace entre le logo et le texte */
+    vertical-align: middle; /* Pour aligner verticalement le logo avec le texte */
+}
+

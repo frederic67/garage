@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Véhicules</title>
+</head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Bouton pour afficher le modal d'ajout de véhicule / Button to display the vehicle addition modal-->
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addVehicleModal">Ajouter un véhicule</button>
+        
+        <!-- Modal pour ajouter un véhicule / Modal to add a vehicle -->
+        <div class="modal fade" id="addVehicleModal" tabindex="-1" role="dialog" aria-labelledby="addVehicleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addVehicleModalLabel">Ajouter un véhicule</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/admin/vehicles" method="post">
+                            <div class="form-group">
+                                <label for="mileage">Kilométrage :</label>
+                                <input type="number" class="form-control" id="mileage" name="mileage" placeholder="Entrez le kilométrage" required>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tableau de véhicules / Vehicle table -->
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Année</th>
+                    <th>Kilométrage</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (vehicles.length === 0) { %>
+                <tr>
+                    <td colspan="5" class="text-center">Aucun véhicule trouvé.</td>
+                </tr>
+                <% } else { 
+                    vehicles.forEach(vehicle => { %>
+                <tr>
+                    <td><%= vehicle.brand %></td>
+                    <td><%= vehicle.model %></td>
+                    <td><%= vehicle.year %></td>
+                    <td><%= vehicle.mileage %> km</td>
+
+                    <td><%= parseFloat(vehicle.price).toFixed(2) %> €</td>
+                    <td>
+                        <a href="#" onclick="editVehicle('<%= vehicle.id %>')" class="btn btn-warning btn-sm mr-2">Modifier</a>
+                        <a href="#" class="btn btn-danger btn-sm" onclick="deleteVehicle('<%= vehicle.id %>')">Supprimer</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="vehicle">
+                            <h4><%= vehicle.brand %> <%= vehicle.model %></h4>
+                            <p><strong>Année :</strong> <%= vehicle.year %></p>
+                            <p><strong>Prix :</strong> <%= parseFloat(vehicle.price).toFixed(2) %> €</p>
+                            <p><strong>Kilométrage :</strong> <%= vehicle.mileage %> km</p>
+
+                            <p><strong>Description :</strong> <%= vehicle.description %></p>
+                            <img src="<%= vehicle.image_url %>" alt="Image du <%= vehicle.brand %> <%= vehicle.model %>" class="img-fluid">
+                        </div>
+                    </td>
+                </tr>
+                <% });
+                } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Scripts JS -->
+    <script>
+        function deleteVehicle(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
+                fetch(`/vehicles/delete/${id}`, {
+                    method: 'DELETE',
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        alert('Erreur lors de la suppression du véhicule.');
+                    }
+                });
+            }
+        }
+
+        function editVehicle(id) {
+            fetch(`/admin/vehicles/edit/${id}`)
+                .then(response => response.json())
+                .then(vehicle => {
+                    const modal = document.querySelector('#addVehicleModal');
+                    modal.querySelector('#brand').value = vehicle.brand;
+                    modal.querySelector('#model').value = vehicle.model;
+                    modal.querySelector('#year').value = vehicle.year;
+                    modal.querySelector('#price').value = vehicle.price;
+                    modal.querySelector('#description').value = vehicle.description;
+                    modal.querySelector('#image_url').value = vehicle.image_url;
+                    modal.querySelector('#mileage').value = vehicle.mileage;
+                    // Change the form action to PUT for editing
+                    modal.querySelector('form').action = `/admin/vehicles/${id}`;
+                    modal.querySelector('input[name="_method"]').value = "PUT";
+
+                    $(modal).modal('show');
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Erreur lors de la récupération des données du véhicule.');
+                });
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.0.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
