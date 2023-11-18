@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Véhicule d'Occasion</title>
+</head>
+<body>
+    <!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+            <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> <!-- Ligne ajoutée -->
+        </div>
+    </div>
+</div>
+    <h2>Ajouter un Véhicule d'Occasion</h2>
+    <form action="/vehiclesOccasion/add" method="POST" enctype="multipart/form-data">
+        <label>Marque: </label>
+        <input type="text" name="brand" required>
+        <br>
+        
+        <label>Modèle: </label>
+        <input type="text" name="model" required>
+        <br>
+        
+        <label>Année: </label>
+        <input type="number" name="year" required>
+        <br>
+        
+        <label>Kilométrage: </label>
+        <input type="number" name="mileage" placeholder="Entrez le kilométrage" required>
+        <br>
+
+
+        <label>Prix: </label>
+        <input type="number" name="price" required>
+        <br>
+        
+        <label>Description: </label>
+        <textarea name="description" rows="4" required></textarea>
+        <br>
+
+        <label>Image du véhicule: </label>
+        <input type="file" name="vehicleImage" accept="image/*" required>
+        <br>
+
+        <input type="submit" value="Ajouter">
+    </form>
+</body>
+</html>

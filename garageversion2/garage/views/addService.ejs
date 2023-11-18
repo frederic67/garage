@@ -1,0 +1,12 @@
+<form action="<%= typeof service !== 'undefined' && service ? '/services/update/' + service.id : '/services/add' %>" method="post">
+  <label for="name">Nom du service:</label>
+  <input type="text" id="name" name="name" value="<%= typeof service !== 'undefined' && service ? service.name : '' %>" required>
+  
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required><%= typeof service !== 'undefined' && service ? service.description : '' %></textarea>
+
+  <label for="price">Prix:</label>
+  <input type="number" step="0.01" id="price" name="price" value="<%= typeof service !== 'undefined' && service ? service.price : '' %>" required>
+
+  <input type="submit" value="<%= typeof service !== 'undefined' && service ? 'Mettre à jour' : 'Ajouter' %>">
+</form>

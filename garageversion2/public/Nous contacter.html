@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nous contacter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Garage V. Parrot</a>
+        <img src="/Red And Black Car Logo.png" alt="Logo du Garage" height="30" class="d-inline-block align-top"> <!-- Ajout du logo ici -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:3000/index.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:3000/nos-services">Nos services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:3000/Nos%20occasions.html">Nos occasions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:3000/nous%20contacter.html">Nous contacter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header avec effet parallax pour la page "Nous contacter" / Header with parallax effect for the “Contact us” page -->
+<section class="contact-parallax">
+    <div class="text-center">
+        <h1>Nous contacter</h1>
+    </div>
+</section>
+
+<section class="team-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Colonne de gauche pour le texte / Left column for text -->
+            <div class="col-lg-6">
+                <div class="text-wrapper">
+                    <h2>Notre équipe</h2>
+                    <p>Notre équipe de professionnels est à votre écoute. Nos techniciens sont formés aux dernières techniques d'entretien et de réparation de votre véhicule. N'hésitez pas à leur demander conseil en cas de doute.</p>
+                </div>
+            </div>
+            
+<div class="col-lg-6">
+    <div class="team-photos">
+        <!-- 1ère ligne de photos -->
+        <div class="row">
+            <!-- Photo 1 -->
+            <div class="col-6">
+                <div class="team-member team-member-1">
+                    <img src="Antoine.png" alt="Membre 1">
+                    <p>Nom Membre 1</p>
+                </div>
+            </div>
+            <!-- Photo 2 -->
+            <div class="col-6">
+                <div class="team-member team-member-2">
+                    <img src="Julien.png" alt="Membre 2">
+                    <p>Nom Membre 2</p>
+                </div>
+            </div>
+        </div>
+        <!-- 2ème ligne de photos -->
+        <div class="row">
+            <!-- Photo 3 -->
+            <div class="col-6">
+                <div class="team-member team-member-3">
+                    <img src="frederic.png" alt="Membre 3">
+                    <p>Nom Membre 3</p>
+                </div>
+            </div>
+            <!-- Photo 4 -->
+            <div class="col-6">
+                <div class="team-member team-member-4">
+                    <img src="Anne.jpg" alt="Membre 4">
+                    <p>Nom Membre 4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="contact-details">
+                    <h3>Coordonnées</h3>
+                    <address>
+                        Garage V.Parrot<br>
+                        14 rue joliot curie<br>
+                        67800 Hoenheim<br>
+                        Tel: 0388380925<br>
+                        Email: <a href="mailto:service.client@vparrot.com">service.client@vparrot.com</a>
+                    </address>
+                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#contactModal" data-vehicle="Modèle de la voiture 1">Nous contacter</a>
+                </div>
+            </div>
+
+            <!-- Image de la carte Google / Google map image -->
+            <div class="col-lg-6">
+                <img src="carte.png" alt="Notre adresse sur Google Maps" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+
+            <!-- Section gauche: Horaires / Left section: Schedules -->
+            <div class="col-md-4">
+                <h4>Nos horaires</h4>
+                <ul class="opening-hours" id="hoursList">
+                    <li>Lundi: 08:45-12:00, 14:00-18:00</li>
+                    <li>Mardi: 08:45-12:00, 14:00-18:00</li>
+                    <li>Mercredi: 08:45-12:00, 14:00-18:00</li>
+                    <li>Jeudi: 08:45-12:00, 14:00-18:00</li>
+                    <li>Vendredi: 08:45-12:00, 14:00-18:00</li>
+                    <li>Samedi: 08:45-12:00</li>
+                    <li>Dimanche: Fermé</li>
+                </ul>
+            </div>
+
+            <!-- Section centrale: Logo -->
+            <div class="col-md-4 text-center"> 
+                <img src="/Red and Black Car Logo.png" alt="Nom du Garage" class="footer-logo">
+            </div>
+
+            <!-- Section droite: Infos diverses / Right section: Miscellaneous information -->
+            <div class="col-md-4">
+                <h4>Informations</h4>
+                <ul>
+                    <li>Téléphone: +33 1 23 45 67 89</li>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Nous contacter</a>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="scripts.js"></script>
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Nous contacter</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/chemin_vers_votre_script_de_traitement" method="POST">
+            <div class="form-group">
+              <label for="name">Nom *</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+    AOS.init();
+</script>  
+<!-- Script pour mettre à jour les horaires / Script to update schedules -->
+<script>
+    const joursEnFrancais = {
+        'Monday': 'Lundi',
+        'Tuesday': 'Mardi',
+        'Wednesday': 'Mercredi',
+        'Thursday': 'Jeudi',
+        'Friday': 'Vendredi',
+        'Saturday': 'Samedi',
+        'Sunday': 'Dimanche'
+    };
+
+    $(document).ready(function() {
+        $.get('http://localhost:3000/api/hours', function(hours) {
+            console.log("Horaires récupérés:", hours); 
+            let hoursHtml = '';
+            hours.forEach(hour => {
+                hoursHtml += `<li>${joursEnFrancais[hour.day]}: ${hour.openTime}-${hour.closeTime}</li>`;
+            });
+            $('#hoursList').html(hoursHtml);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/approved')
+            .then(response => response.json())
+            .then(testimonials => {
+                const testimonialsSection = document.querySelector('.testimonials .row');
+                testimonialsSection.innerHTML = '';  
+                testimonials.forEach(testimonial => {
+                    const testimonialDiv = document.createElement('div');
+                    testimonialDiv.className = 'col-md-6 mb-4';
+                    testimonialDiv.innerHTML = `
+                        <div class="testimonial-item p-3 bg-white">
+                            <div class="testimonial-rating mb-3">${testimonial.rating}/5</div>
+                            <p><strong>${testimonial.name}:</strong> "${testimonial.comment}"</p>
+                        </div>
+                    `;
+                    testimonialsSection.appendChild(testimonialDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des témoignages:', error);
+            });
+    });
+</script>
+</body>
+</html>

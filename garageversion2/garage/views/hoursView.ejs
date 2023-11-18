@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des horaires d'ouverture</title>
+</head>
+
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+  <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+          <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+          <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+          <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+          <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+          <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+          <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> 
+      </div>
+  </div>
+</div>
+<h2>Gestion des horaires d'ouverture</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Jour</th>
+      <th>Heure d'ouverture</th>
+      <th>Heure de fermeture</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% hours.forEach(hour => { %>
+      <tr>
+        <td><%= hour.day %></td>
+        <td><%= hour.openTime %></td>
+        <td><%= hour.closeTime %></td>
+        <td><a href="/updateHours?day=<%= hour.day %>">Modifier</a></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

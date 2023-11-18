@@ -1,0 +1,138 @@
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .editing {
+        background-color: #f7f7f7; /* Couleur de fond pour la ligne en cours de modification */ }
+    </style>
+</head>
+
+<body>
+
+    <% if (typeof success_msg !== 'undefined' && success_msg) { %>
+        <div class="alert alert-success">
+            <%= success_msg %>
+        </div>
+    <% } %>
+    
+    <% if (typeof error_msg !== 'undefined' && error_msg) { %>
+        <div class="alert alert-danger">
+            <%= error_msg %>
+        </div>
+    <% } %>
+    
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+            <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> <!-- Ligne ajoutée -->
+        </div>
+    </div>
+</div>
+    <h2>Ajouter un nouveau service</h2>
+    <button onclick="toggleAddServiceForm()">Ajouter un service</button>
+
+    <form action="/services/add" method="post" class="hidden" id="addServiceForm">
+        <div>
+            <label for="addName">Nom du service:</label>
+            <input type="text" name="name" id="addName">
+        </div>
+        <div>
+            <label for="addDescription">Description:</label>
+            <input type="text" name="description" id="addDescription">
+        </div>
+        <div>
+            <label for="addPrice">Prix:</label>
+            <input type="text" name="price" id="addPrice">
+        </div>
+        <button type="submit">Ajouter</button>
+        <button type="button" onclick="toggleAddServiceForm()">Annuler</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du service</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% services.forEach(service => { %>
+                <tr id="row-<%= service.id %>">
+                    <!-- Vue par défaut (affichage des données) -->
+                    <td class="data-view"><%= service.name %></td>
+                    <td class="data-view"><%= service.description %></td>
+                    <td class="data-view"><%= Number(service.price).toFixed(2) %></td>
+                    <td class="data-view">
+                        <button onclick="toggleEditForm(<%= service.id %>)">Modifier</button>
+                        <a href="/services/delete/<%= service.id %>">Supprimer</a>
+                    </td>
+        
+                    <!-- Vue de mise à jour (formulaire d'édition) -->
+                    <td colspan="4" class="edit-view hidden">
+                        <form action="/services/update/<%= service.id %>" method="post" id="updateForm-<%= service.id %>">
+                            <input type="hidden" name="id" value="<%= service.id %>">
+                            Nom: <input type="text" name="name" value="<%= service.name %>">
+                            Description: <input type="text" name="description" value="<%= service.description %>">
+                            Prix: <input type="text" name="price" value="<%= Number(service.price).toFixed(2) %>">
+                            <button type="submit">Mettre à jour</button>
+                            <button type="button" onclick="toggleEditForm(<%= service.id %>)">Annuler</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <script>
+        function toggleAddServiceForm() {
+        const formElement = document.getElementById('addServiceForm');
+        formElement.classList.toggle('hidden');
+    }
+
+    function toggleEditForm(serviceId) {
+        const rowElement = document.querySelector(`#row-${serviceId}`);
+        const dataElements = rowElement.querySelectorAll('.data-view');
+        const editElement = rowElement.querySelector('.edit-view');
+
+        dataElements.forEach(el => el.classList.toggle('hidden'));
+        editElement.classList.toggle('hidden');
+        rowElement.classList.toggle('editing');
+    }
+    </script>
+</body>
+
+</html>
