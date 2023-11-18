@@ -1,0 +1,40 @@
+
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+            <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> <!-- Ligne ajoutée -->
+        </div>
+    </div>
+</div>
+<form action="/admin/testimonials/add" method="POST">
+
+  <div>
+      <label for="name">Nom:</label>
+      <input type="text" id="name" name="name" required>
+  </div>
+  <div>
+      <label for="comment">Commentaire:</label>
+      <textarea id="comment" name="comment" required></textarea>
+  </div>
+  <div>
+      <label for="rating">Note:</label>
+      <select id="rating" name="rating" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+      </select>
+  </div>
+  <button type="submit">Ajouter un témoignage</button>
+</form>
+
+
+  

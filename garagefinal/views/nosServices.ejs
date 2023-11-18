@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos services</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Garage V. Parrot</a>
+            <img src="/logo.png" alt="Logo du Garage" height="30" class="d-inline-block align-top">
+            <!-- Ajout du logo ici -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/nos-services">Nos services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/Nosoccasions.html">Nos occasions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/Nouscontacter.html">Nous contacter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/login">Connexion
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="services-intro">
+        <img src="entretien.jpg" alt="Image des services" class="img-fluid">
+        <div class="glass text-box">
+            <h2>Découvrez nos services</h2>
+            <p>Faites confiance à nos professionnels pour l'entretien et la réparation de votre véhicule. Nous proposons
+                une large gamme de services, notamment la révision, le changement de freins, la vidange et l'entretien
+                des pièces mécaniques. Nous utilisons uniquement des pièces de qualité pour garantir un fonctionnement
+                optimal de votre voiture.</p>
+        </div>
+    </section>
+
+
+
+
+    <!-- Forfaits frein section / Packages brake section -->
+    <section class="forfaits-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Découvrez nos forfaits frein</h2>
+            <div class="row">
+
+                <% services.filter(service=> service.service_type === 'frein').forEach(service => { %>
+                    <div class="col-lg-4">
+                        <div class="table-item shadow-box">
+                            <div class="inner-content">
+                                <h3 class="text-center">
+                                    <%= service.service_level %>
+                                </h3>
+                                <p><strong>
+                                        <%= service.name %>
+                                    </strong></p>
+                                <ul>
+                                    <li>
+                                        <%= service.description %>
+                                    </li>
+                                </ul>
+                                <p class="price-text mt-3">
+                                    <%= service.price.toFixed(2) %>€
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Forfaits vidange section / Drainage packages section-->
+    <section class="forfaits-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Découvrez nos forfaits vidange</h2>
+            <div class="row">
+
+                <% services.filter(service=> service.service_type === 'vidange').forEach(service => { %>
+                    <div class="col-lg-4">
+                        <div class="table-item shadow-box">
+                            <div class="inner-content">
+                                <h3 class="text-center">
+                                    <%= service.service_level %>
+                                </h3>
+                                <p><strong>
+                                        <%= service.name %>
+                                    </strong></p>
+                                <ul>
+                                    <li>
+                                        <%= service.description %>
+                                    </li>
+                                </ul>
+                                <p class="price-text mt-3">
+                                    <%= service.price.toFixed(2) %>€
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Forfaits révision section / Section revision packages-->
+    <section class="forfaits-revision py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nos forfaits révision</h2>
+            <div class="row">
+
+                <% services.filter(service=> service.service_type === 'revision').forEach(service => { %>
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <div class="table-item shadow-box">
+                            <h3 class="text-center">
+                                <%= service.service_level %>
+                            </h3>
+                            <ul class="list-unstyled">
+                                <li><strong>
+                                        <%= service.name %>
+                                    </strong></li>
+                                <li>
+                                    <%= service.description %>
+                                </li>
+                            </ul>
+                            <p class="price-text mt-3">
+                                <%= service.price.toFixed(2) %>€
+                            </p>
+                        </div>
+                    </div>
+                    <% }); %>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+
+                <!-- Section gauche: Horaires -->
+                <div class="col-md-4">
+                    <h4>Nos horaires</h4>
+                    <ul class="opening-hours" id="hoursList">
+                        <li>Lundi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Mardi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Mercredi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Jeudi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Vendredi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Samedi: 08:45-12:00</li>
+                        <li>Dimanche: Fermé</li>
+                    </ul>
+                </div>
+
+                <!-- Section centrale: Logo -->
+                <div class="col-md-4 text-center">
+                    <img src="/Red and Black Car Logo.png" alt="Garage V.parrot" class="footer-logo">
+                </div>
+
+                <!-- Section droite: Infos diverses -->
+                <div class="col-md-4">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li>Mention légales</li>
+                        <li>Téléphone:0388380925</li>
+                        <li>Email: <a href="mailto:service.client@vparrot.com">service.client@vparrot.com</a></li>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Nous
+                            contacter</a>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+    <!-- Script pour mettre à jour les horaires / Script to update schedules -->
+    <script>
+        const joursEnFrancais = {
+            'Monday': 'Lundi',
+            'Tuesday': 'Mardi',
+            'Wednesday': 'Mercredi',
+            'Thursday': 'Jeudi',
+            'Friday': 'Vendredi',
+            'Saturday': 'Samedi',
+            'Sunday': 'Dimanche'
+        };
+
+        $(document).ready(function () {
+            $.get('http://mafr7435.odns.fr/api/hours', function (hours) {
+                console.log("Horaires récupérés:", hours);
+                let hoursHtml = '';
+                hours.forEach(hour => {
+                    hoursHtml += `<li>${joursEnFrancais[hour.day]}: ${hour.openTime}-${hour.closeTime}</li>`;
+                });
+                $('#hoursList').html(hoursHtml);
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/approved')
+                .then(response => response.json())
+                .then(testimonials => {
+                    const testimonialsSection = document.querySelector('.testimonials .row');
+                    testimonialsSection.innerHTML = '';
+                    testimonials.forEach(testimonial => {
+                        const testimonialDiv = document.createElement('div');
+                        testimonialDiv.className = 'col-md-6 mb-4';
+                        testimonialDiv.innerHTML = `
+                        <div class="testimonial-item p-3 bg-white">
+                            <div class="testimonial-rating mb-3">${testimonial.rating}/5</div>
+                            <p><strong>${testimonial.name}:</strong> "${testimonial.comment}"</p>
+                        </div>
+                    `;
+                        testimonialsSection.appendChild(testimonialDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération des témoignages:', error);
+                });
+        });
+    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Nous contacter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- formulaire de contact / Contact form -->
+                    <form action="/contact" method="post">
+                        <div class="form-group row">
+                            <label for="firstName" class="col-sm-4 col-form-label">Prénom:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastName" class="col-sm-4 col-form-label">Nom:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label">Adresse e-mail:</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-sm-4 col-form-label">Numéro de téléphone:</label>
+                            <div class="col-sm-8">
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="subject" class="col-sm-4 col-form-label">Sujet:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="subject" name="subject">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="message" class="col-sm-4 col-form-label">Message:</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="message" name="message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 text-right">
+                                <input type="submit" class="btn btn-primary" value="Envoyer">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Messages reçus</title>
+    </head>
+<body>
+    <!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <% if (isAdmin) { %>
+                <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+                <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+                <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <% } %>
+            
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> 
+            <a href="/logout" class="list-group-item list-group-item-action bg-light">Se Déconnecter</a>
+        </div>
+    </div>
+</div>
+    <h1>Dashboard - Messages reçus</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Sujet</th>
+                <th>Message</th>
+                <th>Lu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% messages.forEach(message => { %>
+                <tr>
+                    <td><%= message.first_name %> <%= message.last_name %></td>
+                    <td><%= message.email %></td>
+                    <td><%= message.phone %></td>
+                    <td><%= message.subject %></td>
+                    <td><%= message.message %></td>
+                    <td>
+                        <input type="checkbox" <% if (message.read) { %> checked <% } %> />
+                    </td>
+                    <td>
+                        <input type="checkbox" <% if (message.read) { %> checked <% } %> disabled />
+                        <% if (!message.read) { %>
+                            <form action="/dashboard/mark-as-read/<%= message.id %>" method="post">
+                                <button type="submit">Marquer comme lu</button>
+                            </form>
+                        <% } %>
+                    </td>
+                    
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</body>
+</html>

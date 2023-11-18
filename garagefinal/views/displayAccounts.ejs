@@ -1,0 +1,31 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Approuvé</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% accounts.forEach(account => { %>
+      <tr>
+        <td><%= account.id %></td>
+        <td><%= account.name %></td>
+        <td><%= account.email %></td>
+        <td><%= account.approved ? 'Oui' : 'Non' %></td>
+        <td>
+          <a href="/accounts/edit/<%= account.id %>">Modifier</a>
+          <a href="/accounts/delete/<%= account.id %>">Supprimer</a>
+          <% if (!account.approved) { %>
+            <a href="/accounts/approve/<%= account.id %>">Approuver</a>
+          <% } %>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+  

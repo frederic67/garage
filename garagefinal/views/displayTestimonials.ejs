@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un témoignage</title>
+</head>
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <% if (isAdmin) { %>
+                <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+                <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+                <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <% } %>
+            
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> 
+            <a href="/logout" class="list-group-item list-group-item-action bg-light">Se Déconnecter</a>
+        </div>
+    </div>
+</div>
+<a href="/admin/testimonials/add" class="btn btn-primary mb-3">Ajouter un témoignage</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Message</th>
+            <th>Note</th> 
+            <th>Approuvé</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% testimonials.forEach(testimonial => { %>
+            <tr>
+                <td><%= testimonial.id %></td>
+                <td><%= testimonial.name %></td>
+                <td><%= testimonial.comment %></td> 
+                <td><%= testimonial.rating %></td> 
+                <td><%= testimonial.approved ? 'Oui' : 'Non' %></td>
+                <td>
+                    <% if(!testimonial.approved) { %>
+                      <form action="/admin/testimonials/<%= testimonial.id %>/approve" method="POST" style="display: inline;">
+                        <button type="submit">Approuver</button>
+                    </form>
+                    <% } %>
+                    <form action="/admin/testimonials/<%= testimonial.id %>/delete" method="POST" style="display: inline;">
+                      <button type="submit">Supprimer</button>
+                  </form>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  

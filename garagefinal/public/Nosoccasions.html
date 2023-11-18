@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos occasions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    v
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Garage V. Parrot</a>
+            <img src="/logo.png" alt="Logo du Garage" height="30" class="d-inline-block align-top">
+            <!-- Ajout du logo ici -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/nos-services">Nos services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/Nosoccasions.html">Nos occasions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/Nouscontacter.html">Nous
+                            contacter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://mafr7435.odns.fr/login">Connexion
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header Image -->
+    <section class="header-occasion">
+        <img src="occasions.jpg" alt="Nos occasions" class="img-fluid">
+    </section>
+
+    <!-- Recherche de véhicules section / Vehicle search section -->
+    <section class="search-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Recherchez votre véhicule</h2>
+            <form class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="brand">Marque :</label>
+                    <select class="form-control" id="brand" name="brand">
+                        <option selected>Choisissez...</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="price">Prix maximal :</label>
+                    <input type="number" class="form-control" id="price" name="price"
+                        placeholder="Indiquez votre budget">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="year">Année :</label>
+                    <select class="form-control" id="year" name="year">
+                        <option selected>Choisissez...</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="mileage">Kilométrage :</label>
+                    <input type="number" class="form-control" id="mileage" name="mileage"
+                        placeholder="Indiquez le kilométrage">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="maxMileage">Kilométrage maximal :</label>
+                    <input type="number" class="form-control" id="maxMileage" name="maxMileage"
+                        placeholder="Indiquez le kilométrage maximal">
+                </div>
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary" id="searchButton">Rechercher</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section Véhicules / Vehicles Section -->
+    <section class="vehicles-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <!-- Les véhicules seront insérés ici par JavaScript Vehicles will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Section gauche: Horaires Left section: Schedules -->
+                <div class="col-md-4">
+                    <h4>Nos horaires</h4>
+                    <ul class="opening-hours" id="hoursList">
+                        <li>Lundi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Mardi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Mercredi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Jeudi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Vendredi: 08:45-12:00, 14:00-18:00</li>
+                        <li>Samedi: 08:45-12:00</li>
+                        <li>Dimanche: Fermé</li>
+                    </ul>
+                </div>
+
+                <!-- Section centrale: Logo -->
+                <div class="col-md-4 text-center">
+                    <img src="/Red and Black Car Logo.png" alt="Nom du Garage" class="footer-logo">
+                </div>
+
+                <!-- Section droite: Infos diverses -->
+                <div class="col-md-4">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li>Mention légales</li>
+                        <li>Téléphone:0388380925</li>
+                        <li>Email: <a href="mailto:service.client@vparrot.com">service.client@vparrot.com</a></li>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Nous
+                            contacter</a>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="/occasions.js"></script>
+    <script src="/updateVehicles.js"></script>
+    <script src="/searchVehicles.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            function displayVehicles(vehicles) {
+                // Videz d'abord la section des véhicules / Clear the vehicles section first
+
+
+                $('.vehicles-section .row').empty();
+
+                // Parcourez chaque véhicule et créez le HTML correspondant / Browse each vehicle and create the corresponding HTML
+                vehicles.forEach((vehicle, index) => {
+                    const brand = vehicle.brand || "Marque non spécifiée";
+                    const imagePath = vehicle.image_url || "chemin_vers_image_par_defaut.jpg";
+                    const model = vehicle.model || "Modèle non spécifié";
+                    const description = vehicle.description || "Description non spécifiée";
+                    const mileage = vehicle.mileage || "Kilométrage non spécifié";
+                    const price = vehicle.price || "Prix non spécifié";
+
+                    const vehicleHtml = `
+        <div class="col-md-4" id="vehicle${index + 1}">
+            <a href="${imagePath}" class="image-popup">
+                <img src="${imagePath}" alt="Véhicule ${index + 1}" class="img-fluid custom-shadow">
+            </a>
+            <div class="vehicle-description mt-3">
+                <h4>${brand} - ${model}</h4>
+                <p>${description}</p>
+                <p>Kilométrage: ${mileage} km</p>
+                <p>Prix: ${price} €</p>
+                <a href="#" class="btn btn-link contactBtn" data-toggle="modal" data-target="#contactModal" data-name="${brand} - ${model}" data-vehicle="${name}">Nous contacter</a>
+            </div>
+        </div>
+    `;
+
+                    // Ajoutez le HTML du véhicule à la section des véhicules / Add the vehicle HTML to the vehicles section
+                    $('.vehicles-section .row').append(vehicleHtml);
+                });
+            }
+
+            // Récupérer tous les véhicules au chargement de la page / Retrieve all vehicles on page load
+            $.get('/api/vehicles', displayVehicles);
+
+            // Récupérer les marques / Recover marks
+            fetch('/api/brands')
+                .then(response => response.json())
+                .then(brands => {
+                    const brandSelect = document.getElementById('brand');
+                    brandSelect.innerHTML = ''; // Videz la liste déroulante / Clear the drop-down list
+                    brands.forEach(brand => {
+                        const option = document.createElement('option');
+                        option.value = brand;
+                        option.textContent = brand;
+                        brandSelect.appendChild(option);
+                    });
+                });
+
+            // Récupérer les années / Recover the years
+            fetch('/api/years')
+                .then(response => response.json())
+                .then(years => {
+                    const yearSelect = document.getElementById('year');
+                    yearSelect.innerHTML = ''; // Videz la liste déroulante / Clear the drop-down list
+                    years.forEach(year => {
+                        const option = document.createElement('option');
+                        option.value = year;
+                        option.textContent = year;
+                        yearSelect.appendChild(option);
+                    });
+                });
+
+            // Gérer le bouton de recherche / Manage the search button
+            $('#searchButton').click(function () {
+                const brand = $('#brand').val();
+                const price = $('#price').val();
+                const year = $('#year').val();
+                const maxMileage = $('#maxMileage').val(); // Récupérez le kilométrage maximal / Recover Maximum Mileage
+                // Construire l'URL de recherche / Build the search URL
+                const searchUrl = `/api/vehicles/search?brand=${brand}&price=${price}&year=${year}&maxMileage=${maxMileage}`; // Ajoutez le kilométrage à l'URL
+
+                // Récupérer les véhicules filtrés / Recover filtered vehicles
+                $.get(searchUrl, displayVehicles);
+            });
+        });
+    </script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Script pour mettre à jour les horaires / Script to update schedules -->
+    <script>
+        const joursEnFrancais = {
+            'Monday': 'Lundi',
+            'Tuesday': 'Mardi',
+            'Wednesday': 'Mercredi',
+            'Thursday': 'Jeudi',
+            'Friday': 'Vendredi',
+            'Saturday': 'Samedi',
+            'Sunday': 'Dimanche'
+        };
+
+        $(document).ready(function () {
+            $.get('http://mafr7435.odns.fr/api/hours', function (hours) {
+                console.log("Horaires récupérés:", hours);
+                let hoursHtml = '';
+                hours.forEach(hour => {
+                    hoursHtml += `<li>${joursEnFrancais[hour.day]}: ${hour.openTime}-${hour.closeTime}</li>`;
+                });
+                $('#hoursList').html(hoursHtml);
+            });
+        });
+    </script>
+    <script>
+        $(document).on('click', '.contactBtn', function () {
+            const vehicleName = $(this).data('name');
+            console.log(vehicleName)
+            $('#contactSubject').val(vehicleName);
+        });
+
+    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Nous contacter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/contact" method="post">
+                        <div class="form-group row">
+                            <label for="firstName" class="col-sm-4 col-form-label">Prénom:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastName" class="col-sm-4 col-form-label">Nom:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label">Adresse e-mail:</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-sm-4 col-form-label">Numéro de téléphone:</label>
+                            <div class="col-sm-8">
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="subject" class="col-sm-4 col-form-label">Sujet:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="contactSubject" name="subject">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="message" class="col-sm-4 col-form-label">Message:</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="message" name="message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 text-right">
+                                <input type="submit" class="btn btn-primary" value="Envoyer">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

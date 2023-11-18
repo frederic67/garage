@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des véhicules d'occasion</title>
+</head>
+<body>
+    <!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <% if (isAdmin) { %>
+                <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+                <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+                <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <% } %>
+            
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> 
+            <a href="/logout" class="list-group-item list-group-item-action bg-light">Se Déconnecter</a>
+    </div>
+</div>
+    <h1>Liste des véhicules d'occasion</h1>
+    <a href="/vehiclesOccasion/add">Ajouter un véhicule d'occasion</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Année</th>
+                <th>Kilométrage</th>
+
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% vehicles.forEach(vehicle => { %>
+                <tr>
+                    <td><%= vehicle.brand %></td>
+                    <td><%= vehicle.model %></td>
+                    <td><%= vehicle.year %></td>
+                    <td><%= vehicle.mileage %> km</td>
+
+                    <td><%= vehicle.price %></td>
+                    <td><%= vehicle.description %></td>
+                    <td><img src="<%= vehicle.image_url %>" alt="<%= vehicle.model %>" width="100"></td>
+                    <td>
+                        <a href="/vehiclesOccasion/edit/<%= vehicle.id %>">Modifier</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
+

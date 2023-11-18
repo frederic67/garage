@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier les horaires d'ouverture</title>
+</head>
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+  <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+          <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+          <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+          <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+          <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+          <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+          <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> <!-- Ligne ajoutée -->
+            <a href="/logout" class="list-group-item list-group-item-action bg-light">Se Déconnecter</a>
+      </div>
+  </div>
+</div>
+<h2>Modifier les horaires d'ouverture</h2>
+
+<form action="/updateHours" method="post">
+  <label for="day">Jour:</label>
+  <select id="day" name="day" required>
+    <option value="Monday" <%= (day === 'Monday') ? 'selected' : '' %>>Lundi</option>
+    <option value="Tuesday" <%= (day === 'Tuesday') ? 'selected' : '' %>>Mardi</option>
+    <option value="Wednesday" <%= (day === 'Wednesday') ? 'selected' : '' %>>Mercredi</option>
+    <option value="Thursday" <%= (day === 'Thursday') ? 'selected' : '' %>>Jeudi</option>
+    <option value="Friday" <%= (day === 'Friday') ? 'selected' : '' %>>Vendredi</option>
+    <option value="Saturday" <%= (day === 'Saturday') ? 'selected' : '' %>>Samedi</option>
+    <option value="Sunday" <%= (day === 'Sunday') ? 'selected' : '' %>>Dimanche</option>
+  </select>
+
+  <label for="openTime">Heure d'ouverture:</label>
+  <input type="time" id="openTime" name="openTime" value="<%= openTime %>" required>
+
+  <label for="closeTime">Heure de fermeture:</label>
+  <input type="time" id="closeTime" name="closeTime" value="<%= closeTime %>" required>
+
+  <input type="submit" value="Mettre à jour">
+</form>

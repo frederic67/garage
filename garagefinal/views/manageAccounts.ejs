@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des comptes</title>
+</head>
+<body>
+<!-- Menu latéral -->
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Tableau de bord</a>
+            <% if (isAdmin) { %>
+                <a href="/admin/manage-accounts" class="list-group-item list-group-item-action bg-light">Gestion des comptes</a>
+                <a href="/services" class="list-group-item list-group-item-action bg-light">Gestion des services</a>
+                <a href="/updateHours" class="list-group-item list-group-item-action bg-light">Gestion des horaires d'ouverture</a>
+            <% } %>
+            
+            <a href="/vehiclesOccasion" class="list-group-item list-group-item-action bg-light">Gestion des véhicules d'occasion</a>
+            <a href="/admin/testimonials" class="list-group-item list-group-item-action bg-light">Gestion des témoignages</a>
+            <a href="/admin/messages" class="list-group-item list-group-item-action bg-light">Messages</a> 
+            <a href="/logout" class="list-group-item list-group-item-action bg-light">Se Déconnecter</a>
+        </div>
+    </div>
+</div>
+<h1>Gestion des comptes utilisateurs</h1>
+
+<!-- Affichage du nombre de comptes / Displaying the number of accounts -->
+<p>Nombre de comptes: <%= accounts.length %></p>
+
+<!-- Formulaire de création d'employé / Employee creation form -->
+<div class="container">
+    <h2>Création d'un compte employé</h2>
+    <form action="/admin/create-account" method="post">
+        <div class="form-group">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Adresse E-mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de Passe:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="submit">Créer le compte</button>
+    </form>
+</div>
+
+<!-- Liste des comptes / List of accounts-->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% accounts.forEach(account => { %>
+        <tr>
+            <td><%= account.id %></td>
+            <td><%= account.name %></td>
+            <td><%= account.email %></td>
+            <td>
+                <form action="/admin/delete-user/<%= account.id %>?_method=DELETE" method="post">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+</body>
+</html>
